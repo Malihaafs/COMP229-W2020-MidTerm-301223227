@@ -1,7 +1,7 @@
 /*
 file name: app.js
-author: Kevin Tran
-student num: 301154481
+author: Maliha Afsa
+student num: 301223227
 web app name: Comp 229 Midterm
 */
 

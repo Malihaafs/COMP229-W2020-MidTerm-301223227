@@ -67,7 +67,9 @@ router.get('/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
-     book.findById(req.params.id, (err, book) => {
+     const { id } = req.params;
+
+     book.findById(id, (err, book) => {
       if (err) {
         return console.error(err);
       } else {
@@ -87,6 +89,8 @@ router.post('/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+     const { id } = req.params;
+
      let data = req.body;
      // Formats data accordinly
      const upsertData = {
@@ -97,7 +101,7 @@ router.post('/:id', (req, res, next) => {
        Genre: data.genre,
      };
      book.update(
-       { _id: req.params.id },
+       { _id: id },
        upsertData,
        { upsert: true },
        (err, result) => {
@@ -117,7 +121,8 @@ router.get('/delete/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
-     book.remove({ _id: req.params.id }, (err) => {
+     const { id } = req.params;
+     book.remove({ _id: id }, (err) => {
       if (err) {
         return console.error(err);
       } else {
@@ -125,6 +130,5 @@ router.get('/delete/:id', (req, res, next) => {
       }
     });
 });
-
 
 module.exports = router;
